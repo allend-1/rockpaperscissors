@@ -6,19 +6,27 @@ let playerScore = 0;
 let computerScore = 0;
 
 
-
+let choices = ['rock', 'paper', 'scissors'];
 
 
 //get computer choice function//
 function getComputerChoice() {
-    let choices = ['rock', 'paper', 'scissors']
     return choices[Math.floor(Math.random() * choices.length)]; //getting a random float 0-3 then flooring to whole number, selecting random indice in string vector 
 }
 
 
 //get user selection//
-function getUserSelection() {
-    prompt("Which would you choose: 'Rock, Paper, or Scissors'?").toLowerCase()
+function getPlayerChoice() {
+    let flag = true;
+    while (flag == true){
+        const playerChoice = prompt("Which would you choose: 'Rock, Paper, or Scissors'?").toLowerCase();
+        if (playerChoice == null){
+            continue;
+        }
+        if (choices.includes(playerChoice)){
+        flag = false;
+        return playerChoice;}
+    }
     
 }
 
@@ -50,9 +58,38 @@ function oneRound(playerSelection, computerSelection){
 
 }
 
-//create a for loop for 5 games 
+//create a for loop for 5 games (GAME FUNCTION)
 function game(){
-    for (let i = 0; i<5, i++){
-        
+    let playerScore = 0;
+    let compScore =0;
+
+    console.log('First to 5 wins')
+    for (let i = 0; i<5; i++) {
+        const computerSelection = getComputerChoice();
+        const playerSelection = getPlayerChoice();
+        console.log(oneRound(playerSelection, computerSelection));
+        console.log('----------------')
+
+        if(whoWins(playerSelection, computerSelection) == 'Computer'){
+            compScore++}
+
+        else if(whoWins(playerSelection, computerSelection) == 'Player'){
+        playerScore++}
+
+        console.log(`Player Score is ${playerScore}`)
+        console.log(`Computer Score is ${compScore}`)
+
+    }
+    console.log("Game Over!")
+    if(playerScore>compScore){
+        console.log('You WON the battle!')
+    }
+    else if(playerScore<compScore){
+        console.log('You have LOST the battle!')
+    }
+    else if(playerScore == compScore){
+        console.log('TIE BATTLE')
     }
 }
+
+game()
