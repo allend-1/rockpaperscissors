@@ -5,18 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors Game!</title>
+    <script src="new-game.js"></script>
+    <link rel= "stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah">
 </head>
 <body>
-    <script src="game.js"></script>
     <h1>The Game of Rock, Paper, Scissors!</h1>
-    <h2>You have 5 lives, select wisely...</h2>
+    <h2>You have 5 lives, select wisely...</h2>  <!-- May need to reword this-->
     
-   <!-- <div class="button">
-        <button class="rock-button"><img src="images/rock.png"></button>
-        <button class="paper-button"><img src="images/paper.png"></button>
-        <button class="scissors-button"><img src="images/scissors.png"></button> 
+    <div class="button">
+        <button class="btn" id ="rock" ><img src="images/rock.png" alt="Rock image"></button>
+        <button class="btn" id = "paper"><img src="images/paper.png" alt="Paper image"></button>
+        <button class="btn" id = "scissors"><img src="images/scissors.png" alt="Scissors image"></button> 
     </div>
-    -->
+
+    <div class="text-part">
+        <p class="text" id="player-score">Player Score: </p>
+        <p class="text" id="computer-score"> Computer Score: </p>
+    </div>
+
+    <div>
+        <p class="text" id="output">May the Best Person Win!</p>
+    </div>
+
+    <footer>
+        Made By: <img id="github-pic" src="images/gh-logo.png"><a href=https://github.com/allend-1> allend-1</a>
+    </footer>
 </body>
 </html>
 
