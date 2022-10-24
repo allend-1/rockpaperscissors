@@ -4,34 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper, Scissors Game!</title>
-    <script src="new-game.js"></script>
-    <link rel= "stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah">
+    <title>Rock, Paper, Scissors!</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- FONTAWESOME Import -->
+  <script src="https://kit.fontawesome.com/1872a23027.js" crossorigin="anonymous"></script>  <!--Link to font directory-->
 </head>
+
 <body>
-    <h1>The Game of Rock, Paper, Scissors!</h1>
-    <h2>You have 5 lives, select wisely...</h2>  <!-- May need to reword this-->
     
-    <div class="button">
-        <button class="btn" id ="rock" ><img src="images/rock.png" alt="Rock image"></button>
-        <button class="btn" id = "paper"><img src="images/paper.png" alt="Paper image"></button>
-        <button class="btn" id = "scissors"><img src="images/scissors.png" alt="Scissors image"></button> 
-    </div>
+    <main>
+        <div class="result-window">
+            <h1>Rock Paper Scissors</h1>
+            <p>First to 5 wins, May the best win!</p>
 
-    <div class="text-part">
-        <p class="text" id="player-score">Player Score: </p>
-        <p class="text" id="computer-score"> Computer Score: </p>
-    </div>
+            <section class="results">
+                <div class="score">
+                    <h2>Player: </h2>
+                    <p class="digit" id="playerScore">0</p>
+                </div>
+                <div>VS</div>
+                <div class="score">
+                    <h2>COMPUTER</h2>
+                    <p class="digit" id="compScore">0</p>
+                  </div>
+            </section>
+            <h3 id="roundResult"> </h3>
+        </div>
 
-    <div>
-        <p class="text" id="output">May the Best Person Win!</p>
-    </div>
+        <section class = "buttons">
+            <button value="Rock"><i class="fa-solid fa-hand-back-fist"></i></button> <!--i element is just italics-->
+            <button value="Paper"><i class="fa-solid fa-hand"></i></button>
+            <button value="Scissors"><i class="fa-solid fa-hand-scissors"></i></button>
+        </section>
 
-    <footer>
-        Made By: <img id="github-pic" src="images/gh-logo.png"><a href=https://github.com/allend-1> allend-1</a>
-    </footer>
+    </main>
+    <script src="game.js"></script> <!---script must go after the class lists are created-->
 </body>
+   <footer class = "footer">Copyright: <img src="images/gh-logo.png" class = "ghLogo" alt="Github logo">:allend-1</footer>
 </html>
-
-

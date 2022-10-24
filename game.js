@@ -1,95 +1,68 @@
-// Initiate the amount of lives and score each player has at beginning//
-let playerLives = 5;
-let computerLives = 5;
 
+//DOM
+const playerScoreDigit = document.querySelector("#playerScore");
+const compScoreDigit = document.querySelector("#compScore");
+const roundResult = document.querySelector("#roundResult");
+const buttons = document.querySelectorAll(".buttons button");  // See what will happen if you remove the button part (end) 
+
+//Game Logic 
 let playerScore = 0;
-let computerScore = 0;
+let compScore = 0; 
 
+//Function that gets the computer selection 
+const getComputerChoice = () => {
+    let computerChoice;
+    let randomNumber = Math.floor(Math.random() * (3) + 1);
 
-let choices = ['rock', 'paper', 'scissors'];
-
-
-//get computer choice function//
-function getComputerChoice() {
-    return choices[Math.floor(Math.random() * choices.length)]; //getting a random float 0-3 then flooring to whole number, selecting random indice in string vector 
-}
-
-
-//get user selection//
-function getPlayerChoice() {
-    let flag = true;
-    while (flag == true){
-        const playerChoice = prompt("Which would you choose: 'Rock, Paper, or Scissors'?").toLowerCase();
-        if (playerChoice == null){
-            continue;
-        }
-        if (choices.includes(playerChoice)){
-        flag = false;
-        return playerChoice;}
+    if(randomNumber === 1){
+        computerChoice = "Rock";
     }
-    
-}
-
-
-
-//check who won 
-function whoWins(playerSelection, computerSelection){
-    if(playerSelection==computerSelection){
-        return 'Tie';}
-
-    else if((playerSelection == 'rock' && computerSelection == 'scissors')  || 
-            (playerSelection == 'scissors' && computerSelection == 'paper') ||
-            (playerSelection == 'paper' && computerSelection == 'rock')){
-            return 'Player';}
-    else {
-        return 'Computer'}
-}
-
-function oneRound(playerSelection, computerSelection){
-    const result = whoWins(playerSelection, computerSelection);
-    if (result == 'Tie'){
-        return 'Tie Game'
+    else if(randomNumber === 2){
+        computerChoice = "Paper";
     }
-    else if(result=='Player'){
-        return `You Won! ${playerSelection} beats ${computerSelection}`}
-
-    else if(result == 'Computer'){
-         return `You lost ${computerSelection} beats ${playerSelection}`}
-
-}
-
-//create a for loop for 5 games (GAME FUNCTION)
-function game(){
-    let playerScore = 0;
-    let compScore =0;
-
-    console.log('First to 5 wins')
-    for (let i = 0; i<5; i++) {
-        const computerSelection = getComputerChoice();
-        const playerSelection = getPlayerChoice();
-        console.log(oneRound(playerSelection, computerSelection));
-        console.log('----------------')
-
-        if(whoWins(playerSelection, computerSelection) == 'Computer'){
-            compScore++}
-
-        else if(whoWins(playerSelection, computerSelection) == 'Player'){
-        playerScore++}
-
-        console.log(`Player Score is ${playerScore}`)
-        console.log(`Computer Score is ${compScore}`)
-
+    else if(randomNumber === 3){
+        computerChoice = "Scissors";
     }
-    console.log("Game Over!")
-    if(playerScore>compScore){
-        console.log('You WON the battle!')
-    }
-    else if(playerScore<compScore){
-        console.log('You have LOST the battle!')
-    }
-    else if(playerScore == compScore){
-        console.log('TIE BATTLE')
-    }
-}
+    return computerChoice;
+};
 
-game()
+const playRound = (player, comp) => {
+    let finalResult = player + comp;
+
+    if(player === comp) roundResult.textContent = "TIE";
+    else if(
+        finalResult === "RockScissors" ||
+        finalResult === "ScissorsPaper" ||
+        finalResult === "PaperRock"
+    ){
+        roundResult.textContent = `You WIN! ${player} beats ${comp}`;
+        playerScore++;
+        playerScoreDigit.textContent = playerScore;
+    }
+    else{
+        roundResult.textContent = `You LOST! ${comp} beats ${player}`;
+        compScore++;
+        compScoreDigit.textContent = compScore;
+    }
+};
+
+//Create a function that actually plays a game (first to 5)
+const game = (player,comp) => {
+    if(playerScore < 5 && compScore < 5) playRound(player,comp)
+
+    if(playerScore === 5){
+        roundResult.textContent = "Congrats! YOU WON THE GAME!!"
+        return;
+    }
+    else if(compScore === 5){
+        roundResult.textContent = "Better luck next time, YOU LOST THE GAME!"
+        return;
+    }
+};
+
+//Initialize the game 
+for (const button of buttons) {
+    button.addEventListener("click",function () {
+        game(button.value,getComputerChoice());
+    });
+};
