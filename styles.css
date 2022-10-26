@@ -27,7 +27,7 @@ p,h2, #roundResult{
     font-size: 50px;
     color: red;
     
-    background-color: gold;
+    background-color: rgb(51, 0, 255);
     margin: 0%;
     border: dashed;
 }
@@ -52,17 +52,24 @@ main{
     justify-content: center;
     flex-direction: column;
 }
-
-.buttons button:hover {
-    box-shadow: 0 0 50px rgba(225, 0, 0, 0.55);
+.fa-solid fa-hand-back-fist{
+    font-size: 300px;
 }
 
+.rock-img, .paper-img, .scissors-img{
+    height: 15rem;
+    background-color: transparent;
+}
+button{
+    background-color: transparent;
+    border: hidden;
+}
 .buttons{
-    margin: 50px 0px 0px 0px;
-    display: grid;
-   padding-bottom: 200px;
-   grid-template-columns: repeat(3, 1fr); /* Check this */
-   gap: 50px;
+    
+    margin: 10px 0px 0px 0px;
+    display: flex;
+   padding-bottom: 100px;
+   gap: 90px;
 }
 
 body{
@@ -71,7 +78,7 @@ body{
 };
 
 .result-window{
-    background-color: yellow;
+    background-color: rgb(23, 110, 165);
 }
 
 .ghLogo{
