@@ -52,10 +52,19 @@ const game = (player,comp) => {
 
     if(playerScore === 5){
         roundResult.textContent = "Congrats! YOU WON THE GAME!!"
+        playerScore = 0;
+        compScore= 0
+        playerScoreDigit.textContent = playerScore;
+        compScoreDigit.textContent = compScore;
         return;
     }
     else if(compScore === 5){
         roundResult.textContent = "Better luck next time, YOU LOST THE GAME!"
+        playerScore = 0;
+        compScore= 0;
+        playerScoreDigit.textContent = playerScore;
+        compScoreDigit.textContent = compScore;
+
         return;
     }
 };
